@@ -21,8 +21,8 @@ export class AppComponent {
   public token = null;
 
   constructor(private userService: UserService, private router: Router) {
-    this.user = new User('', '', '', '', '', 'ROLE_USER', '');
-    this.user_register = new User('', '', '', '', '', 'ROLE_USER', '');
+    this.user = new User('', '', '', '', '', 'ROLE_USER');
+    this.user_register = new User('', '', '', '', '', 'ROLE_USER');
   }
 
   ngOnInit() {
@@ -62,7 +62,7 @@ export class AppComponent {
                     M.toast({ html: 'Error Login' });
                   } else {
                     localStorage.setItem('token', token);
-                    this.user = new User('', '', '', '', '', 'ROLE_USER', '');
+                    this.user = new User('', '', '', '', '', 'ROLE_USER');
                   }
                 }, err => {
                   M.toast({ html: 'Not login' });
@@ -109,7 +109,7 @@ export class AppComponent {
           M.toast({ html: 'Not register' });
         } else {
           M.toast({ html: 'User register succesfully. You can login using: ' + this.user_register.email });
-          this.user_register = new User('', '', '', '', '', 'ROLE_USER', '');
+          this.user_register = new User('', '', '', '', '', 'ROLE_USER');
         }
       },
        error => {

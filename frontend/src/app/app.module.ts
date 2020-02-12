@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './views/home/home.component';
 import { ContactComponent } from './views/contact/contact.component';
 import { MenuComponent } from './menu/menu/menu.component';
+import { BookingsComponent } from './components/bookings/bookings.component';
+import { CompaniesComponent } from './components/companies/companies.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { MenuComponent } from './menu/menu/menu.component';
     TeachersComponent,
     HomeComponent,
     ContactComponent,
-    MenuComponent
+    MenuComponent,
+    BookingsComponent,
+    CompaniesComponent
   ],
   imports: [
     BrowserModule,

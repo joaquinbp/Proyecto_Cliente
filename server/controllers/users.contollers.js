@@ -12,7 +12,6 @@ userCtrl.saveUser = (req,res) => {
     user.surname = params.surname;
     user.email = params.email;
     user.rol = 'ROLE_ADMIN';
-    user.image = 'null';
 
     if(params.password){
         //Crypt and save data
