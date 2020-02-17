@@ -38,8 +38,6 @@ bookingController.editBooking = async (req, res) =>{
     try{
         const {id} = req.params;
         const booking = {
-        id_user: req.body.user,
-        id_company: req.body.company,
         user: req.body.user,
         company: req.body.company,
         date : req.body.date,

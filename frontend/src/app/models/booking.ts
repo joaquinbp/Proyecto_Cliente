@@ -1,13 +1,15 @@
 export class Booking {
-    constructor(
-        public _id: String,
-        public user_id: String,
-        public company_id: String,
-        public user: String,
-        public company: String,
-        public date: String,
-        public time: String
-    ) {
+   _id : String;
+   user: String;
+   company: String;
+   date: String;
+   time: String;
 
-    }
+   constructor(_id='', user='', company='', date='', time=''){
+       this._id = _id;
+       this.user = user;
+       this.company = company;
+       this.date = date;
+       this.time = time;
+   }
 }
