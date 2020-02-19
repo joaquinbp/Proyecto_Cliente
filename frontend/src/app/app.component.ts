@@ -14,7 +14,7 @@ declare var M: any;
   providers: [UserService]
 })
 export class AppComponent {
-  public title = 'Teacher App';
+  public title = 'NOF: Net Of Fixers';
   public user: User;
   public user_register: User;
   public identity = null;
@@ -31,7 +31,7 @@ export class AppComponent {
   }
 
   public onSubmitLogin(form: NgForm) {
-
+  
     const params = {
       email: form.value.email,
       password: form.value.password,

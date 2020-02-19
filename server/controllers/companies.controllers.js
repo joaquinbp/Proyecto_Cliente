@@ -36,19 +36,11 @@ companiesController.editCompany = async (req, res) =>{
     try{
         const {id} = req.params;
         const company = {
-            user: req.body.user,
-            password: req.body.password,
             name : req.body.name,
             CIF : req.body.CIF,
-            email : req.body.email,
-            logo : req.body.logo,
             address : req.body.address,
             city: req.body.city,
-            sector : req.body.sector,
-            address : req.body.address,
-            sector : req.body.sector,
-            score: req.body.score,
-            comments : req.body.comments
+            sector : req.body.sector
     
         }
     

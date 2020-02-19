@@ -1,10 +1,10 @@
 <div *ngIf="identity">
-    <h1>Teacher App</h1>
+    <h1>NOF: Net Of Fixers</h1>
     <div>
-        Hi {{identity.name}}  {{identity.surname}}.
+        Hola {{identity.name}}  {{identity.surname}}.
         <span class="btn btn-warning" (click)="logout()">Log out</span>
     </div>
-    <app-menu></app-menu>
+    <app-menu></app-menu><span class="btn btn-warning" (click)="logout()">Log out</span>
     <router-outlet></router-outlet>
 </div>
 

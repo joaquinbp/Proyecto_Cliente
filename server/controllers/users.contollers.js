@@ -11,7 +11,7 @@ userCtrl.saveUser = (req,res) => {
     user.name = params.name;
     user.surname = params.surname;
     user.email = params.email;
-    user.rol = 'ROLE_ADMIN';
+    user.role = 'ROLE_USER';
 
     if(params.password){
         //Crypt and save data
@@ -100,16 +100,11 @@ userCtrl.editUser = async (req, res) =>{
     try{
         const {id} = req.params;
         const user = {
-            user: req.body.user,
-            password: req.body.password,
             name : req.body.name,
             surname : req.body.surname,
             email : req.body.email,
-            birthday : req.body.birthday,
-            address : req.body.address,
-            photo : req.body.photo,
-            admin : req.body.admin,
-    
+            password: req.body.password,
+            role: req.body.role
         }
     
         await User.findByIdAndUpdate(id,{$set:user},{new:true});
