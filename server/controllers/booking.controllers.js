@@ -13,7 +13,12 @@ bookingController.getBookings = async (req, res) => {
 
 bookingController.createBooking = async (req, res) =>{
     try{
-        const booking = new Booking(req.body);
+        const booking = new Booking({
+            user: req.body.user,
+            company:  req.body.company,
+            date:  req.body.date,
+            time:  req.body.time
+       });
         await booking.save();
         res.json({
             status: 'Booking save'

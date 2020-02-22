@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BookingsService } from '../../services/bookings.service';
 import { Booking } from '../../models/booking';
 import { NgForm } from '@angular/forms';
+import {UserService} from '../../services/users.service';
+import { CompaniesService } from '../../services/companies.service';
 
 declare var M: any;
 
@@ -13,11 +15,26 @@ declare var M: any;
 })
 export class BookingsComponent implements OnInit {
 
-  constructor(private bookingService: BookingsService) { }
+  public identity = null;
+  public token = null;
+  public companies;
+
+  constructor(private bookingService: BookingsService, private userService: UserService, private companyService: CompaniesService ) { }
 
   ngOnInit() {
     this.getBookings();
+    this.getCompanies();
+    this.identity = this.userService.getIdentity();
+    this.token = this.userService.getToken();
   }
+
+  getCompanies(){
+    this.companyService.getCompanies()
+    .subscribe (res => {
+      this.companies = res;
+    });
+  }
+
 
   addBooking(form: NgForm) {
 
@@ -51,7 +68,6 @@ export class BookingsComponent implements OnInit {
     this.bookingService.getBookings()
       .subscribe(res => {
         this.bookingService.bookings = res as Booking[];
-        console.log(res);
       });
   }
 
@@ -68,6 +84,7 @@ export class BookingsComponent implements OnInit {
         })
     }
   }
+  
 
 
 }

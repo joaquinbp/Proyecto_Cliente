@@ -1,7 +1,9 @@
-<h1>Companies</h1>
+<h1><i class="medium material-icons">build</i> Companies</h1>
+<hr>
+<br><br>
 <div class="container">
     <div class="row">
-        <div class="col s5">
+        <div class="col s5" *ngIf='identity.role.indexOf("ROLE_ADMIN")>=0'> 
             <div class="card">
                 <div class="card-content">
                     <form #companyform="ngForm" (ngSubmit)="addCompany(companyform)">
@@ -33,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <div class="col s7">
+        <div class="col s7" >
             <table>
                 <thead>
                     <th>Name</th>
@@ -41,7 +43,7 @@
                     <th>Address</th>
                     <th>City</th>
                     <th>Sector</th>
-                    <th>Operations</th>
+                    <th *ngIf='identity.role.indexOf("ROLE_ADMIN")>=0'>Operations</th>
                 </thead>
                 <tbody>
                     <tr *ngFor = "let company of companyService.companies">
@@ -50,7 +52,7 @@
                         <td>{{company.address}}</td>
                         <td>{{company.city}}</td>
                         <td>{{company.sector}}</td>
-                        <td>
+                        <td *ngIf='identity.role.indexOf("ROLE_ADMIN")>=0'>
                             <a (click) = "editCompany(company)">
                                 <i class="material-icons">edit</i>
                             </a>

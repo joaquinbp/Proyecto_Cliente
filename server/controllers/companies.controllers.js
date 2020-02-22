@@ -13,7 +13,13 @@ companiesController.getCompanies = async (req, res) => {
 
 companiesController.createCompany = async (req, res) =>{
     try{
-        const company = new Company(req.body);
+       const company = new Company({
+            name: req.body.name,
+            CIF:  req.body.CIF,
+            address:  req.body.address,
+            city:  req.body.city,
+            sector:  req.body.sector
+       });
         await company.save();
         res.json({
             status: 'Company save'

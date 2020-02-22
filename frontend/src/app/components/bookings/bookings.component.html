@@ -1,18 +1,33 @@
-<h1>Bookings</h1>
+<h1><i class="medium material-icons">event</i> Bookings</h1>
+<hr>
+<br><br>
 <div class="container">
     <div class="row">
-        <div class="col s5">
+        <div class="col s5 ">
             <div class="card">
                 <div class="card-content">
                     <form #bookingform="ngForm" (ngSubmit)="addBooking(bookingform)">
                         <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] = "bookingService.selectedBooking._id">
                        <div class="row">
                            <div class="input-field col s12">
-                               <input type="text" name="user" #user = "ngModel" [(ngModel)] = "bookingService.selectedBooking.user" placeholder="Enter your user">
+                               <input type="text" name="user" #user = "ngModel" [(ngModel)] = "bookingService.selectedBooking.user"  placeholder="{{identity.email}}">
                             </div>
                             <div class="input-field col s12">
-                                <input type="text" name="company" #company = "ngModel" [(ngModel)] = "bookingService.selectedBooking.company" placeholder="Enter the company name">
-                             </div>
+                                <input type="text" name="company" #company = "ngModel" [(ngModel)] = "bookingService.selectedBooking.company" placeholder="Enter the company name"> 
+                                <!--
+                                <form action="#">
+                                    <p>Companies:</p><br>
+                                    <div *ngFor="let company of companies">
+                                        <p>
+                                            <label>
+                                                <input type="radio" name="group1" checked />
+                                                <span>{{company.name}}</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                </form>
+                               -->
+                            </div>
                              <div class="input-field col s12">
                                 <input type="text" name="date" #date = "ngModel" [(ngModel)] = "bookingService.selectedBooking.date" placeholder="Enter the date">
                              </div>
@@ -21,8 +36,8 @@
                              </div>
                              <div class="card-action">
                                  <div class="input-field col s12">
-                                     <button class="btn" (click) = "resetForm(bookingform)">Clear</button>
-                                     <button class="btn right">Save</button>
+                                     <button class="btn red" (click) = "resetForm(bookingform)">Clear</button>
+                                     <button class="btn right red">Save</button>
                                  </div>
                              </div>
                        </div> 
@@ -41,11 +56,12 @@
                 </thead>
                 <tbody>
                     <tr *ngFor = "let booking of bookingService.bookings">
-                        <td>{{booking.user}}</td>
-                        <td>{{booking.company}}</td>
-                        <td>{{booking.date}}</td>
-                        <td>{{booking.time}}</td>
-                        <td>
+                       <!--<div id="showBookings" *ngIf='identity.email === (booking.user) || identity.role.indexOf("ROLE_ADMIN")>=0'>--> 
+                        <td *ngIf='identity.email === (booking.user) || identity.role.indexOf("ROLE_ADMIN")>=0'>{{booking.user}}</td>
+                        <td *ngIf='identity.email === (booking.user) || identity.role.indexOf("ROLE_ADMIN")>=0'>{{booking.company}}</td>
+                        <td *ngIf='identity.email === (booking.user) || identity.role.indexOf("ROLE_ADMIN")>=0'>{{booking.date}}</td>
+                        <td *ngIf='identity.email === (booking.user) || identity.role.indexOf("ROLE_ADMIN")>=0'>{{booking.time}}</td>
+                        <td *ngIf='identity.email === (booking.user) || identity.role.indexOf("ROLE_ADMIN")>=0'>
                             <a (click) = "editBooking(booking)">
                                 <i class="material-icons">edit</i>
                             </a>

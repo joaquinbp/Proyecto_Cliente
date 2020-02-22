@@ -1,25 +1,38 @@
-<div *ngIf="identity">
-    <h1>NOF: Net Of Fixers</h1>
-    <div>
-        Hola {{identity.name}}  {{identity.surname}}.
-        <span class="btn btn-warning" (click)="logout()">Log out</span>
+<div *ngIf="identity" id="cabecera">
+<app-menu></app-menu>
+    <div id="usuario">
+        Hola {{identity.name}}  {{identity.surname}}. 
+        <a class="waves-effect waves-light btn-small red"  (click)="logout()"><i class="material-icons left ">exit_to_app</i>Logout</a>
+       <!-- <span class="btn-small btn-white" (click)="logout()"><i class="material-icons left">exit_to_app</i>Log out</span>-->
     </div>
-    <app-menu></app-menu><span class="btn btn-warning" (click)="logout()">Log out</span>
+    
     <router-outlet></router-outlet>
 </div>
 
 <div *ngIf="!identity">
+    <nav class="nav-wrapper red">
+        <div class="container">
+            <a href="#" class="brand-logo">NOF: Net Of Fixers</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Companies</a></li>
+                <li><a href="#">Bookings</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
     <div class="row">
         <div class="col s6">
             <h2>Login</h2>
-            <form #loginForm="ngForm" (ngSubmit)="onSubmitLogin(loginForm)" class="col s7">
+            <form #loginForm="ngForm" (ngSubmit)="onSubmitLogin(loginForm)" class="col s7" id="login">
                 <p>
+                    
                     <label>Email</label><input type="email"  #email="ngModel" name="email" [(ngModel)]="user.email" required/>
                 </p>
                 <p>
                     <label>Password</label><input type="password"  #password="ngModel" name="password" [(ngModel)]="user.password" required/>
                 </p>
-                <input type="submit" value="Login" class="btn"/>
+                <input type="submit" value="Login" class="btn red"/>
             </form>
         </div>
         <div class="col s6">
@@ -41,8 +54,35 @@
                     <label>Password</label><input type="password" #password="ngModel" name="password" [(ngModel)]="user_register.password" required/>
                     <span *ngIf="password.touched && !password.valid">This field is required</span>
                 </p>
-                <input type="submit" value="Register" class="btn"/>
+                <input type="submit" value="Register" class="btn red"/>
             </form>
         </div>
     </div>
 </div>
+
+<footer class="page-footer red">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Net Of Fixers</h5>
+          <hr>
+          <p class="grey-text text-lighten-4">Somos una empresa que nace para cubrir dos necesidades del mercado, promocionar el trabajo de pequeñas empresas o autónomos y dar un servicio a domicilio express a jóvenes  que tengan alguna avería en su hogar.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Contacto</h5>
+          <ul>
+            <li><i class="material-icons">email</i> joaquinbono.18@campuscamara.es</li>
+            <li><i class="material-icons">stay_current_portrait</i> 635486072</li>
+            <li><i class="material-icons">place</i> C/ Leonardo da Vinci, 7</li>
+            <li><i class="material-icons">watch_later</i> 9:00-21:00h</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2020 Copyright Joaquín Bono
+      <a class="grey-text text-lighten-4 right" href="https://github.com/joaquinbp/" target="_blanck">GitHub</a>
+      </div>
+    </div>
+  </footer>

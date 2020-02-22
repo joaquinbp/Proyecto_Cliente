@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CompaniesService } from '../../services/companies.service';
 import { NgForm } from '@angular/forms';
 import { Company } from '../../models/company';
+import {UserService} from '../../services/users.service';
 
 declare var M: any;
 
@@ -12,11 +13,15 @@ declare var M: any;
   providers: [CompaniesService]
 })
 export class CompaniesComponent implements OnInit {
+  public identity = null;
+  public token = null;
 
-  constructor(private companyService: CompaniesService) {}
+  constructor(private companyService: CompaniesService,  private userService: UserService) {}
 
   ngOnInit() {
     this.getCompanies();
+    this.identity = this.userService.getIdentity();
+    this.token = this.userService.getToken();
   }
 
   addCompany(form: NgForm) {

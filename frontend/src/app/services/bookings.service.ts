@@ -15,18 +15,42 @@ export class BookingsService {
    }
 
    getBookings() {
-    return this.http.get(this.URL_API);
+    const httpOptions = {
+      headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          'Authorization':localStorage.getItem('token')
+      })
+  };
+    return this.http.get(this.URL_API,httpOptions);
   }
 
   createBooking(booking: Booking) {
-    return this.http.post(this.URL_API, booking);
+    const httpOptions = {
+      headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          'Authorization':localStorage.getItem('token')
+      })
+  };
+    return this.http.post(this.URL_API, booking,httpOptions);
   }
 
   editBooking(booking: Booking) {
-    return this.http.put(this.URL_API + `/${booking._id}`, booking);
+    const httpOptions = {
+      headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          'Authorization':localStorage.getItem('token')
+      })
+  };
+    return this.http.put(this.URL_API + `/${booking._id}`, booking, httpOptions);
   }
 
   deleteBooking(_id : String) {
-    return this.http.delete(this.URL_API + `/${_id}`);
+    const httpOptions = {
+      headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          'Authorization':localStorage.getItem('token')
+      })
+  };
+    return this.http.delete(this.URL_API + `/${_id}`,httpOptions);
   }
 }

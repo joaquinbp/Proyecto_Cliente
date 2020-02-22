@@ -1,0 +1,60 @@
+
+ .parallax-container {
+   min-height: 380px;
+   line-height: 0;
+   height: auto;
+   color:black;
+   text-align: center;
+ }
+ #logo{
+   align-content: center;
+ }
+ #cabecera{
+   background-color: #ECECEC;
+ }
+ #manos{
+   background-image: url("../../../assets/portada.jpg");
+   min-height: 320px;
+   background-size: cover;
+   
+ }
+ #titulo{
+  color:#FE6748 !important;
+ }
+ #nosotros{
+   background-color: #FBC0B4;
+   border-radius: 20px;
+   margin-top: 6em;
+ }
+ 
+   .parallax-container .section {
+     width: 100%;
+   }
+ 
+ @media only screen and (max-width : 992px) {
+   .parallax-container .section {
+     position: absolute;
+     top: 40%;
+   }
+   #index-banner .section {
+     top: 10%;
+   }
+ }
+ 
+ @media only screen and (max-width : 600px) {
+   #index-banner .section {
+     top: 0;
+   }
+ }
+ 
+ .icon-block {
+   padding: 0 15px;
+ }
+ .icon-block .material-icons {
+   font-size: inherit;
+ }
+ 
+ footer.page-footer {
+   margin: 0;
+ }
+ 

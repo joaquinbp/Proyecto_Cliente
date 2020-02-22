@@ -15,18 +15,42 @@ export class CompaniesService {
   }
 
   getCompanies() {
-    return this.http.get(this.URL_API);
+    const httpOptions = {
+      headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          'Authorization':localStorage.getItem('token')
+      })
+  };
+    return this.http.get(this.URL_API, httpOptions);
   }
 
   createCompany(company: Company) {
-    return this.http.post(this.URL_API, company);
+    const httpOptions = {
+      headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          'Authorization':localStorage.getItem('token')
+      })
+  };
+    return this.http.post(this.URL_API, company, httpOptions);
   }
 
   editCompany(company: Company) {
-    return this.http.put(this.URL_API + `/${company._id}`, company);
+    const httpOptions = {
+      headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          'Authorization':localStorage.getItem('token')
+      })
+  };
+    return this.http.put(this.URL_API + `/${company._id}`, company, httpOptions);
   }
 
   deleteCompany(_id : String) {
-    return this.http.delete(this.URL_API + `/${_id}`);
+    const httpOptions = {
+      headers: new HttpHeaders({
+          'Content-Type':'application/json',
+          'Authorization':localStorage.getItem('token')
+      })
+  };
+    return this.http.delete(this.URL_API + `/${_id}`,httpOptions);
   }
 }
