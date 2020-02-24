@@ -52,7 +52,7 @@
                     <th>Operations</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor = "let booking of bookingService.bookings">S
+                    <tr *ngFor = "let booking of bookingService.bookings">
                         <td *ngIf='identity.email === (booking.user) || identity.role.indexOf("ROLE_ADMIN")>=0'>{{booking.user}}</td>
                         <td *ngIf='identity.email === (booking.user) || identity.role.indexOf("ROLE_ADMIN")>=0'>{{booking.company}}</td>
                         <td *ngIf='identity.email === (booking.user) || identity.role.indexOf("ROLE_ADMIN")>=0'>{{booking.date}}</td>
