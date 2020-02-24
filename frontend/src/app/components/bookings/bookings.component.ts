@@ -41,7 +41,6 @@ export class BookingsComponent implements OnInit {
     if(form.value._id){
       this.bookingService.editBooking(form.value)
         .subscribe(res => {
-          console.log(res);
           this.resetForm(form);
           M.toast({html: 'Booking update succesfully'});
           this.getBookings();
@@ -49,7 +48,6 @@ export class BookingsComponent implements OnInit {
     } else{
       this.bookingService.createBooking(form.value)
       .subscribe(res => {
-        console.log(res);
         this.resetForm(form);
         M.toast({html: 'Booking save succesfully'});
         this.getBookings();

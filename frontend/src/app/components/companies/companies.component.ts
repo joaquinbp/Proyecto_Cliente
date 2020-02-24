@@ -29,7 +29,6 @@ export class CompaniesComponent implements OnInit {
     if(form.value._id){
       this.companyService.editCompany(form.value)
         .subscribe(res => {
-          console.log(res);
           this.resetForm(form);
           M.toast({html: 'Company update succesfully'});
           this.getCompanies();
@@ -37,7 +36,6 @@ export class CompaniesComponent implements OnInit {
     } else{
       this.companyService.createCompany(form.value)
       .subscribe(res => {
-        console.log(res);
         this.resetForm(form);
         M.toast({html: 'Company save succesfully'});
         this.getCompanies();
@@ -56,7 +54,6 @@ export class CompaniesComponent implements OnInit {
     this.companyService.getCompanies()
       .subscribe(res => {
         this.companyService.companies = res as Company[];
-        console.log(res);
       });
   }
 
@@ -74,5 +71,9 @@ export class CompaniesComponent implements OnInit {
     }
   }
 
-
-}
+  showForm(){
+      var elems = document.querySelectorAll('.collapsible');
+      var instances = M.Collapsible.init(elems, {accordion: false});
+    }
+  
+  }

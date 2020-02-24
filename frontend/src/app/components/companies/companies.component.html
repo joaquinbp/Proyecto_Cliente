@@ -1,41 +1,62 @@
 <h1><i class="medium material-icons">build</i> Companies</h1>
 <hr>
 <br><br>
-<div class="container">
+<div class="container-fluid" >
     <div class="row">
-        <div class="col s5" *ngIf='identity.role.indexOf("ROLE_ADMIN")>=0'> 
-            <div class="card">
-                <div class="card-content">
-                    <form #companyform="ngForm" (ngSubmit)="addCompany(companyform)">
-                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)] = "companyService.selectedCompany._id">
-                       <div class="row">
-                           <div class="input-field col s12">
-                               <input type="text" name="name" #name = "ngModel" [(ngModel)] = "companyService.selectedCompany.name" placeholder="Enter the company name">
+        <div class="col s5" *ngIf='identity.role.indexOf("ROLE_ADMIN")>=0' (click)="showForm()">
+            <ul class="collapsible"  >
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">add</i>Add new company</div>
+                    <div class="collapsible-body">
+                        <div class="card">
+                            <div class="card-content">
+                                <form #companyform="ngForm" (ngSubmit)="addCompany(companyform)">
+                                    <input type="hidden" name="_id" #_id="ngModel"
+                                        [(ngModel)]="companyService.selectedCompany._id">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input type="text" name="name" #name="ngModel"
+                                                [(ngModel)]="companyService.selectedCompany.name"
+                                                placeholder="Enter the company name">
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input type="text" name="CIF" #CIF="ngModel"
+                                                [(ngModel)]="companyService.selectedCompany.CIF"
+                                                placeholder="Enter the company CIF">
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input type="text" name="address" #address="ngModel"
+                                                [(ngModel)]="companyService.selectedCompany.address"
+                                                placeholder="Enter the address">
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input type="text" name="city" #city="ngModel"
+                                                [(ngModel)]="companyService.selectedCompany.city"
+                                                placeholder="Enter the city">
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input type="text" name="sector" #sector="ngModel"
+                                                [(ngModel)]="companyService.selectedCompany.sector"
+                                                placeholder="Enter the sector">
+                                        </div>
+                                        <div class="card-action">
+                                            <div class="input-field col s12">
+                                                <button class="btn red" (click)="resetForm(companyform)">Clear</button>
+                                                <button class="btn right red">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="input-field col s12">
-                                <input type="text" name="CIF" #CIF = "ngModel" [(ngModel)] = "companyService.selectedCompany.CIF" placeholder="Enter the company CIF">
-                             </div>
-                             <div class="input-field col s12">
-                                <input type="text" name="address" #address = "ngModel" [(ngModel)] = "companyService.selectedCompany.address" placeholder="Enter the address">
-                             </div>
-                             <div class="input-field col s12">
-                                <input type="text" name="city" #city = "ngModel" [(ngModel)] = "companyService.selectedCompany.city" placeholder="Enter the city">
-                             </div>
-                             <div class="input-field col s12">
-                                <input type="text" name="sector" #sector = "ngModel" [(ngModel)] = "companyService.selectedCompany.sector" placeholder="Enter the sector">
-                             </div>
-                             <div class="card-action">
-                                 <div class="input-field col s12">
-                                     <button class="btn" (click) = "resetForm(companyform)">Clear</button>
-                                     <button class="btn right">Save</button>
-                                 </div>
-                             </div>
-                       </div> 
-                    </form>
-                </div>
-            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div class="col s7" >
+    </div>
+</div>
+    <div class="container-fluid" id="contenedor">
+        <div class="col s8">
             <table class="centered striped">
                 <thead>
                     <th>Name</th>
@@ -46,17 +67,17 @@
                     <th *ngIf='identity.role.indexOf("ROLE_ADMIN")>=0'>Operations</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor = "let company of companyService.companies">
+                    <tr *ngFor="let company of companyService.companies">
                         <td>{{company.name}}</td>
                         <td>{{company.CIF}}</td>
                         <td>{{company.address}}</td>
                         <td>{{company.city}}</td>
                         <td>{{company.sector}}</td>
                         <td *ngIf='identity.role.indexOf("ROLE_ADMIN")>=0'>
-                            <a (click) = "editCompany(company)">
+                            <a (click)="editCompany(company)">
                                 <i class="material-icons">edit</i>
                             </a>
-                            <a (click) = "deleteCompany(company._id)">
+                            <a (click)="deleteCompany(company._id)">
                                 <i class="material-icons">delete</i>
                             </a>
                         </td>
@@ -65,5 +86,3 @@
             </table>
         </div>
     </div>
-</div>
-

@@ -3,7 +3,6 @@
     <div id="usuario">
         Hola {{identity.name}}  {{identity.surname}}. 
         <a class="waves-effect waves-light btn-small red"  (click)="logout()"><i class="material-icons left ">exit_to_app</i>Logout</a>
-       <!-- <span class="btn-small btn-white" (click)="logout()"><i class="material-icons left">exit_to_app</i>Log out</span>-->
     </div>
     
     <router-outlet></router-outlet>
@@ -23,7 +22,7 @@
     </nav>
     <div class="row">
         <div class="col s6">
-            <h2>Login</h2>
+            <h2><i class="material-icons medium">person</i> Login</h2>
             <form #loginForm="ngForm" (ngSubmit)="onSubmitLogin(loginForm)" class="col s7" id="login">
                 <p>
                     
@@ -36,7 +35,7 @@
             </form>
         </div>
         <div class="col s6">
-            <h2>Register</h2>
+            <h2><i class="material-icons medium">person_add</i> Register</h2>
             <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister(registerForm)" class="col s7">
                 <p>
                     <label>Name</label><input type="text" #name="ngModel" name="name" [(ngModel)]="user_register.name" required/>

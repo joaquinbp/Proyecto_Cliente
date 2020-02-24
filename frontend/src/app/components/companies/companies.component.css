@@ -12,3 +12,7 @@ tr{
 h1{
     text-align: center;
 }
+
+#contenedor{
+    padding: 2em;
+}

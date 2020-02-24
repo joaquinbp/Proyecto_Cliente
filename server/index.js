@@ -19,5 +19,4 @@ app.use('/api/booking',require('./routers/bookings.routes'));
 
 //Starting the serve
 app.listen(app.get('port'), ()=>{
-    console.log('Server on port 4000');
 });
